@@ -1,1 +1,0 @@
-NDSummary.OnToolTipsLoaded("File3:inc/scs-telemetry-common.hpp",{7:"<div class=\"NDToolTip TMacro LC\"><div class=\"TTSummary\">The maximum number of substances that are saved to the memory</div></div>"});

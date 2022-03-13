@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("lbg",["Variable"],[["lbGeneral",,[["SCSSdkClient.Demo.SCSSdkClientDemo",,,,0,"File2:SCSSdkClient.Demo/SCSSdkClientDemo.Designer.cs:SCSSdkClient.Demo.SCSSdkClientDemo.lbGeneral","CSharpClass:SCSSdkClient.Demo.SCSSdkClientDemo:lbGeneral"]]]]);

@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("mai",["Function"],[["Main",,[["SCSSdkClient.Demo.Program",,,,0,"File2:SCSSdkClient.Demo/Program.cs:SCSSdkClient.Demo.Program.Main","CSharpClass:SCSSdkClient.Demo.Program:Main"]]]]);

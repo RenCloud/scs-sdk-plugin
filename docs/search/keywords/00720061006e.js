@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("ran",["Property"],[["Range",,[["SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard.Fuel",,,,0,"File:Object/SCSTelemetry.Truck.Current.cs:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard.Fuel.Range","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard.Fuel:Range"]]]]);

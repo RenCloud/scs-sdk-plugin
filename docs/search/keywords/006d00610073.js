@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("mas",["Property"],[["Mass",,[["SCSSdkClient.Object.SCSTelemetry.Job.Cargo",,,,0,"File:Object/SCSTelemetry.Job.cs:SCSSdkClient.Object.SCSTelemetry.Job.Cargo.Mass","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Job.Cargo:Mass"]]]]);

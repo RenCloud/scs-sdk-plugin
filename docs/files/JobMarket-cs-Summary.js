@@ -1,1 +1,0 @@
-NDFramePage.OnPageTitleLoaded("File:JobMarket.cs","JobMarket.cs");NDSummary.OnSummaryLoaded("File:JobMarket.cs",[["C#","CSharp"]],[["Enums","Enumeration"],["Groups","Group"]],[[676,0,1,"Types","SCSSdkClient.Types"],[677,0,0,"JobMarket","SCSSdkClient.JobMarket"]]);

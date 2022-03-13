@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("exe",["Function"],[["exe_path",,[[,,,,0,"File3:src/log.cpp:exe_path"]]]]);

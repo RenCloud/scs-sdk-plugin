@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("fre",["Class"],[["Frequency",,[["SCSSdkClient.Object.SCSTelemetry",,,,0,"File:Object/SCSTelemetry.Frequency.cs:SCSSdkClient.Object.SCSTelemetry.Frequency","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Frequency"]]]]);

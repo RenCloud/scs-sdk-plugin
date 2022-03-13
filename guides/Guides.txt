@@ -1,7 +1,0 @@
-Title: Guides
-	
-	In this place of the documentation you can find some guides, help and other tipps for 	working with this plugin and with the sdk overall.
-
-About: C++
-	
-	To see some information to the C++ Code look here <C++ Code>.

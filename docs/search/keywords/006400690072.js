@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("dir",["Function"],[["directory_exists",,[[,,,,0,"File3:src/log.cpp:directory_exists"]]]]);

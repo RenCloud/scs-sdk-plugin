@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("map",["Property"],[["Map",,[["SCSSdkClient.SCSSdkTelemetry",,,,0,"File:SCSSdkTelemetry.cs:SCSSdkClient.SCSSdkTelemetry.Map","CSharpClass:SCSSdkClient.SCSSdkTelemetry:Map"]]]]);

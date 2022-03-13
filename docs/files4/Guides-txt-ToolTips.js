@@ -1,1 +1,0 @@
-NDContentPage.OnToolTipsLoaded({3:"<div class=\"NDToolTip TSection LTextFile\"><div class=\"TTSummary\">Some information to handle the cpp files in the telemetry.</div></div>"});

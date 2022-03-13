@@ -1,1 +1,0 @@
-NDFramePage.OnPageTitleLoaded("File:Offence.cs","Offence.cs");NDSummary.OnSummaryLoaded("File:Offence.cs",[["C#","CSharp"]],[["Enums","Enumeration"],["Groups","Group"],["Information","Information"]],[[666,0,1,"Types","SCSSdkClient.Types"],[667,0,0,"Offence","SCSSdkClient.Offence"],[668,0,2,"Values","SCSSdkClient.Offence.Values"]]);

@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("avt",["Information"],[["Avtive",,[["SCSSdkClient.Object.SCSTelemetry.Truck.Current.Lights","Blinker Avtive",,,0,"File:Object/SCSTelemetry.Truck.Current.cs:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Lights.Blinker_Avtive","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Lights:Blinker_Avtive"]]]]);

@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("raw",["Property"],[["RawData",,[["SCSSdkClient.SharedMemory",,,,0,"File:SharedMemory.cs:SCSSdkClient.SharedMemory.RawData","CSharpClass:SCSSdkClient.SharedMemory:RawData"]]]]);

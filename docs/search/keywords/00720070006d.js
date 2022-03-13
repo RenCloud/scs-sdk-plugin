@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("rpm",["Property"],[["RPM",,[["SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard",,,,0,"File:Object/SCSTelemetry.Truck.Current.cs:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard.RPM","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard:RPM"]]]]);

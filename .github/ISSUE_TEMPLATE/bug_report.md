@@ -1,7 +1,6 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-
 ---
 
 **Describe the bug**
@@ -17,19 +16,16 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+**Screenshots/logs**
 If applicable, add screenshots to help explain your problem.
+For logs, go to game documents folder and find the *.log file
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+**Information (please complete the following information):**
+ - OS and version: [e.g. Windows 11 21H2, OS Build 22000.318; Ubuntu 21.10]
+ - Game version: [e.g. ETS2 1.41, ATS]
+ - Plugin version: [e.g. 12.0; commit hash]
+ - Mods used: [List of mods, if any]
+ - Other information: [e.g. Convoy mode, TruckersMP, other plugins]
 
 **Additional context**
 Add any other context about the problem here.

@@ -1,5 +1,13 @@
 # Changelog
 
+## Rev 12
+
+<strong>CHANGED FROM MMF TO TCP SOCKETS!</strong>
+
+### Important Changes
+
+- The plugin now uses the TCP socket instead of a Memory Mapped File for cross-platform ability and improved performance
+
 ## Rev 11 (coming early due to some changes)
 
 ### Important Changes

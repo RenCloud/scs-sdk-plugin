@@ -1,1 +1,0 @@
-NDFramePage.OnPageTitleLoaded("File3:inc/scs-telemetry-common.hpp","scs-telemetry-common.hpp");NDSummary.OnSummaryLoaded("File3:inc/scs-telemetry-common.hpp",[["C/C++","C"]],[["Groups","Group"],["Macros","Macro"]],[[6,0,0,"Macros","Macros"],[7,0,1,"SUBSTANCE_SIZE","SUBSTANCE_SIZE"]]);

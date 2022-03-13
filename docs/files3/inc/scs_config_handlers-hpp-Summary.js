@@ -1,1 +1,0 @@
-NDFramePage.OnPageTitleLoaded("File3:inc/scs_config_handlers.hpp","scs_config_handlers.hpp");NDSummary.OnSummaryLoaded("File3:inc/scs_config_handlers.hpp",[["C/C++","C"]],[["Groups","Group"],["Macros","Macro"]],[[1,0,0,"Macros","Macros"],[2,0,1,"scsConfigHandle","scsConfigHandle"]]);

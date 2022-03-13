@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("wip",["Property"],[["Wipers",,[["SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard",,,,0,"File:Object/SCSTelemetry.Truck.Current.cs:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard.Wipers","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Truck.Current.Dashboard:Wipers"]]]]);

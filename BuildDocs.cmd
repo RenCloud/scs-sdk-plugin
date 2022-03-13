@@ -1,1 +1,0 @@
-NaturalDocs.exe Config

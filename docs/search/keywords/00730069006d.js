@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("sim",["Property"],[["Simulated",,[["SCSSdkClient.Object.SCSTelemetry.WheelsConstants",,,,0,"File:Object/SCSTelemetry.Wheels.cs:SCSSdkClient.Object.SCSTelemetry.WheelsConstants.Simulated","CSharpClass:SCSSdkClient.Object.SCSTelemetry.WheelsConstants:Simulated"]]]]);

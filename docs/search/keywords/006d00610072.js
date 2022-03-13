@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("mar",["Property"],[["Market",,[["SCSSdkClient.Object.SCSTelemetry.Job",,,,0,"File:Object/SCSTelemetry.Job.cs:SCSSdkClient.Object.SCSTelemetry.Job.Market","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Job:Market"]]]]);

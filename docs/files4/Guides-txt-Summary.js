@@ -1,1 +1,0 @@
-NDFramePage.OnPageTitleLoaded("File4:Guides.txt","Guides.txt");NDSummary.OnSummaryLoaded("File4:Guides.txt",[["Text File","TextFile"]],[["Groups","Group"],["Information","Information"],["Sections","Section"]],[[8,0,2,"Guides","Guides"],[9,0,0,"Information","Information"],[10,0,1,"C++","C++"]]);

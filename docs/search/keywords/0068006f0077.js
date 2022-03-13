@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("how",["Information"],[["How",,[[,"How to",,,0,"File3:src/log.cpp:How_to"]]]]);

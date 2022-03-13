@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("max",["Property"],[["MaxTrailerCount",,[["SCSSdkClient.Object.SCSTelemetry",,,,0,"File:Object/SCSTelemetry.cs:SCSSdkClient.Object.SCSTelemetry.MaxTrailerCount","CSharpClass:SCSSdkClient.Object.SCSTelemetry:MaxTrailerCount"]]]]);

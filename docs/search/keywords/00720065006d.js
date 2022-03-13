@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("rem",["Information"],[["RemainingDeliveryTime",,[["SCSSdkClient.Object.SCSTelemetry.Job",,,,0,"File:Object/SCSTelemetry.Job.cs:SCSSdkClient.Object.SCSTelemetry.Job.RemainingDeliveryTime","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Job:RemainingDeliveryTime"]]]]);

@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("wri",["Function"],[["Write",,[["SCSSdkClient.Log",,,,0,"File:Log.cs:SCSSdkClient.Log.Write","CSharpClass:SCSSdkClient.Log:Write"]]]]);

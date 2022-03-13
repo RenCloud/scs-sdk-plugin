@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("sw",["Variable"],[["sw",,[["SCSSdkClient.Log",,,,0,"File:Log.cs:SCSSdkClient.Log.sw","CSharpClass:SCSSdkClient.Log:sw"]]]]);

@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("sta",["Variable"],[["statusStrip1",,[["SCSSdkClient.Demo.SCSSdkClientDemo",,,,0,"File2:SCSSdkClient.Demo/SCSSdkClientDemo.Designer.cs:SCSSdkClient.Demo.SCSSdkClientDemo.statusStrip1","CSharpClass:SCSSdkClient.Demo.SCSSdkClientDemo:statusStrip1"]]]]);

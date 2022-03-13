@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("pen",["Variable"],[["Penalty",,[["SCSSdkClient.Object.SCSTelemetry.GamePlayEvents.Cancelled",,,,0,"File:Object/SCSTelemetry.GamePlayEvents.cs:SCSSdkClient.Object.SCSTelemetry.GamePlayEvents.Cancelled.Penalty","CSharpClass:SCSSdkClient.Object.SCSTelemetry.GamePlayEvents.Cancelled:Penalty"]]]]);

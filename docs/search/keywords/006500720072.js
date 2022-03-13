@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("err",["Property"],[["Error",,[["SCSSdkClient.SCSSdkTelemetry",,,,0,"File:SCSSdkTelemetry.cs:SCSSdkClient.SCSSdkTelemetry.Error","CSharpClass:SCSSdkClient.SCSSdkTelemetry:Error"]]]]);

@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("ric",["Variable"],[["richTextBox1",,[["SCSSdkClient.Demo.SCSSdkClientDemo",,,,0,"File2:SCSSdkClient.Demo/SCSSdkClientDemo.Designer.cs:SCSSdkClient.Demo.SCSSdkClientDemo.richTextBox1","CSharpClass:SCSSdkClient.Demo.SCSSdkClientDemo:richTextBox1"]]]]);

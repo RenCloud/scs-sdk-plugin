@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("mov",["Class"],[["Movement",,[["SCSSdkClient.Object.SCSTelemetry",,,,0,"File:Object/SCSTelemetry.Movement.cs:SCSSdkClient.Object.SCSTelemetry.Movement","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Movement"]]]]);

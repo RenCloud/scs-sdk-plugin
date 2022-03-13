@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("maj",["Property"],[["Major",,[["SCSSdkClient.Object.SCSTelemetry.Version",,,,0,"File:Object/SCSTelemetry.Version.cs:SCSSdkClient.Object.SCSTelemetry.Version.Major","CSharpClass:SCSSdkClient.Object.SCSTelemetry.Version:Major"]]]]);

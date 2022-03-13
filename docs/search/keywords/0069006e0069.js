@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("ini",["Function"],[["InitializeComponent",,[["SCSSdkClient.Demo.SCSSdkClientDemo",,,,0,"File2:SCSSdkClient.Demo/SCSSdkClientDemo.Designer.cs:SCSSdkClient.Demo.SCSSdkClientDemo.InitializeComponent","CSharpClass:SCSSdkClient.Demo.SCSSdkClientDemo:InitializeComponent"]]]]);

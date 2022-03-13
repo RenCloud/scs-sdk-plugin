@@ -1,1 +1,0 @@
-NDContentPage.OnToolTipsLoaded({2:"<div class=\"NDToolTip TMacro LC\"><div class=\"TTSummary\">Makro of the scs_config event handle functions Created with an id and attribute value to create the name `handle##id##attribute`</div></div>",7:"<div class=\"NDToolTip TMacro LC\"><div class=\"TTSummary\">The maximum number of substances that are saved to the memory</div></div>"});

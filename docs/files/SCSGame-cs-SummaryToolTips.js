@@ -1,1 +1,0 @@
-NDSummary.OnToolTipsLoaded("File:SCSGame.cs",{664:"<div class=\"NDToolTip TEnumeration LCSharp\"><div id=\"NDPrototype664\" class=\"NDPrototype NoParameterForm\"><span class=\"SHKeyword\">public enum</span> SCSGame</div><div class=\"TTSummary\">Which game loaded the sdk?</div></div>"});

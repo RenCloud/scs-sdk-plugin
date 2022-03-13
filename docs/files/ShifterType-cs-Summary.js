@@ -1,1 +1,0 @@
-NDFramePage.OnPageTitleLoaded("File:ShifterType.cs","ShifterType.cs");NDSummary.OnSummaryLoaded("File:ShifterType.cs",[["C#","CSharp"]],[["Enums","Enumeration"],["Groups","Group"],["Information","Information"]],[[559,0,1,"Types","SCSSdkClient.Types"],[560,0,0,"ShifterType","SCSSdkClient.ShifterType"],[561,0,2,"Values","SCSSdkClient.ShifterType.Values"]]);
