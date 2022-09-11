@@ -45,7 +45,7 @@ enum gameplayType { cancelled, delivered, fined, tollgate, ferry, train };
 void log_line(scs_log_type_t type, const char* text, ...);
 void log_line(const char* text, ...);
 
-typedef struct scsTrailer_s { // Size: 1556
+typedef struct scsTrailer_s { // Size: 1560
 	//----- START OF FIRST ZONE AT OFFSET 0 -----//
 	struct {
 		bool wheelSteerable[16];
@@ -107,8 +107,9 @@ typedef struct scsTrailer_s { // Size: 1556
 		float wheelPositionY[16];
 		float wheelPositionZ[16];
 	}con_fv;
-	//----- END OF 4TH ZONE AT OFFSET 867 -----//
-		//----- START OF 5TH ZONE AT OFFSET 868 -----//
+    char buffer_fv[4];
+	//----- END OF 4TH ZONE AT OFFSET 871 -----//
+		//----- START OF 5TH ZONE AT OFFSET 872 -----//
 	struct {
 		double worldX;
 		double worldY;
@@ -118,8 +119,8 @@ typedef struct scsTrailer_s { // Size: 1556
 		double rotationZ;
 	}com_dp;
 
-	//----- END OF 5TH ZONE AT OFFSET 915 -----//
-		//----- START OF 6TH ZONE AT OFFSET 916 -----//
+	//----- END OF 5TH ZONE AT OFFSET 919 -----//
+		//----- START OF 6TH ZONE AT OFFSET 920 -----//
 	struct {
 		char id[stringsize];
 		char cargoAcessoryId[stringsize];
@@ -132,7 +133,7 @@ typedef struct scsTrailer_s { // Size: 1556
 		char licensePlateCountry[stringsize];
 		char licensePlateCountryId[stringsize];
 	}con_s;
-	//----- END OF 6TH ZONE AT OFFSET 1555 -----//
+	//----- END OF 6TH ZONE AT OFFSET 1559 -----//
 }scsTrailer_t;
 
 /**
@@ -541,12 +542,12 @@ typedef struct scsTelemetryMap_s
 	//----- END OF 13TH ZONE AT OFFSET 5999 -----//
 
 	//----- START OF 14TH ZONE AT OFFSET 6000 -----//
-	// The 14th zone contains values of up to 10 trailers (each have a size of 1556)
+	// The 14th zone contains values of up to 10 trailers (each have a size of 1560)
 	struct {
 		scsTrailer_t trailer[10];
 	}trailer;
 
-	//----- END OF 14TH ZONE AT OFFSET 21579 -----//
+	//----- END OF 14TH ZONE AT OFFSET 21619 -----//
 } scsTelemetryMap_t;
 
 #endif

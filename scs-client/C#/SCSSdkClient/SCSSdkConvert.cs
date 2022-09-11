@@ -564,6 +564,8 @@ namespace SCSSdkClient {
 
             trailer.WheelsConstant.PositionValues = GetFVectorArray(WheelSize);
 
+            SetOffset(4);
+
             #endregion floatvector Region
 
             #region double placement Region
