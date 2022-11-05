@@ -42,6 +42,7 @@ Rev Numbers shows big changes on the shared memory and sometimes on the C# objec
 
 Lower SDK Version means there are less values / values that are zero. To get an overview which values that are look at the list at the middle of this document.
 Note to the SDK Version: SDK 1.13 is not the same like the sdk version of ETS2 or ATS. Both games have an own SDK version. See list under ATS.
+A version number with an asterisk (e.g. 1.46*) indicates that this version is currently in open beta.
 
 ### ETS2
 
@@ -53,7 +54,7 @@ Note to the SDK Version: SDK 1.13 is not the same like the sdk version of ETS2 o
 | 1.36            | 1.15            | Should work                        |
 | - 1.40          | 1.16            | Should work                        |
 | 1.41 - 1.44     | 1.17            | Should work                        |
-| 1.45            | 1.18            | Works, Test Version                |
+| 1.45 - 1.46*    | 1.18            | Works, Test Version                |
 
 
 ### ATS
@@ -65,7 +66,7 @@ Note to the SDK Version: SDK 1.13 is not the same like the sdk version of ETS2 o
 | 1.36            | 1.02        | Should work         |
 | - 1.40          | 1.03        | Should work         |
 | 1.41 - 1.44     | 1.04        | Should work         |
-| 1.45            | 1.05        | Works, Test Version |
+| 1.45 - 1.46*    | 1.05        | Works, Test Version |
 
 
 ### SDK VERSION AND GAME SDK VERSION
@@ -100,7 +101,7 @@ New stuff is marked with the <ins>inserted</ins> Tag.
 │    ├── Telemetry Timestamp (<mark>not the in-game time</mark>, only for usage in code, see documentation for more information #todo add link) (<mark>now ulong</mark>)
 │    ├── Simulation Timestamp
 │    ├── Render Timestamp
-│    ├── <ins>Multiplayer Time Offset</ins> (1.18/1.05/1.45) 
+│    ├── <ins>Multiplayer Time Offset</ins> (1.18/1.05/1.45)
 │    ├── Paused, game state
 │    ├── SCSGame identifier as enum, currently ets2/ats/unknown
 │    ├── GameVersion and Game Telemetry Version (major.minor)
@@ -271,7 +272,7 @@ New stuff is marked with the <ins>inserted</ins> Tag.
 │    │    │    ├── Cargo (1.14/1.01/1.35)
 │    │    │    ├── Wheels
 │    │    │    └── Chassis
-│    │    │    └── <ins>Body</ins> (1.18/1.05/1.45) 
+│    │    │    └── <ins>Body</ins> (1.18/1.05/1.45)
 │    │    ├── Chassis (code)
 │    │    ├── Id (code)
 │    │    ├── Name
