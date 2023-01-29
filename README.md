@@ -38,7 +38,7 @@ This plug-in stores it's data inside a Memory Mapped File, or "Shared Memory". T
 
 Rev Numbers shows big changes on the shared memory and sometimes on the C# object. That means Rev 10 wont work with Rev 9. Doesn't matter which side is not updated. Sub Versions that you can see in changelog.md should work with small errors or completely without. The C# object is mostly not changed. Only if needed, because of new values (most of the cases) or structure changes (less the case). If this occurs i will notice that. (See changelog.md. If you directly access the shared memory you will find an overview about the changes here.)
 
-### Plugin for 1.45/SDK1.14
+### Plugin for 1.46/SDK1.14
 
 Lower SDK Version means there are less values / values that are zero. To get an overview which values that are look at the list at the middle of this document.
 Note to the SDK Version: SDK 1.13 is not the same like the sdk version of ETS2 or ATS. Both games have an own SDK version. See list under ATS.
@@ -54,7 +54,7 @@ A version number with an asterisk (e.g. 1.46*) indicates that this version is cu
 | 1.36            | 1.15            | Should work                        |
 | - 1.40          | 1.16            | Should work                        |
 | 1.41 - 1.44     | 1.17            | Should work                        |
-| 1.45 - 1.46*    | 1.18            | Works, Test Version                |
+| 1.45 - 1.46     | 1.18            | Works, Test Version                |
 
 
 ### ATS
@@ -66,7 +66,7 @@ A version number with an asterisk (e.g. 1.46*) indicates that this version is cu
 | 1.36            | 1.02        | Should work         |
 | - 1.40          | 1.03        | Should work         |
 | 1.41 - 1.44     | 1.04        | Should work         |
-| 1.45 - 1.46*    | 1.05        | Works, Test Version |
+| 1.45 - 1.46     | 1.05        | Works, Test Version |
 
 
 ### SDK VERSION AND GAME SDK VERSION
