@@ -1,5 +1,9 @@
 # Changelog
 
+## Rev 12, Update 1
+
+- fix: add check to avoid a race condition when converting the data
+
 ## Rev 12, former Rev 11 Update 1
 
 Change version to 12, because of offset changes. This leads to a rev change and not just an update like it was before. 

@@ -22,7 +22,7 @@ namespace SCSSdkClient {
     /// </summary>
     public class SCSSdkTelemetry: IDisposable {
         private const string DefaultSharedMemoryMap = "Local\\SCSTelemetry";
-        private const int DefaultUpdateInterval = 1;
+        private const int DefaultUpdateInterval = 100;
         private const int DefaultPausedUpdateInterval = 1000;
 
         private int updateInterval;
