@@ -3,14 +3,15 @@ using System.Threading;
 using SCSSdkClient.Object;
 
 namespace SCSSdkClient {
+
     /// <summary>
     ///     Data Event
-    ///     
+    ///
     ///     The parameter **newTimeStamp** is deprecated and will be removed in a future release.
-    /// 
+    ///
     /// </summary>
-    /// 
-    /// 
+    ///
+    ///
     /// <param name="data">All data of the telemetry</param>
     /// <param name="newTimestamp">Flag if the data changed</param>
     public delegate void TelemetryData(SCSTelemetry data, bool newTimestamp);
@@ -19,20 +20,19 @@ namespace SCSSdkClient {
     ///     Handle the SCSSdkTelemetry.
     ///     Currently IDisposable. Was implemented because of an error
     /// </summary>
-    public class SCSSdkTelemetry : IDisposable {
+    public class SCSSdkTelemetry: IDisposable {
         private const string DefaultSharedMemoryMap = "Local\\SCSTelemetry";
-        private const int DefaultUpdateInterval = 100;
+        private const int DefaultUpdateInterval = 1;
         private const int DefaultPausedUpdateInterval = 1000;
 
         private int updateInterval;
 
-        // todo: enhancement:  some way to set this value 
+        // todo: enhancement:  some way to set this value
         private readonly int pausedUpdateInterval = DefaultPausedUpdateInterval;
 
         private Timer _updateTimer;
 
         private ulong lastTime = 0xFFFFFFFFFFFFFFFF;
-
 
 #if LOGGING
         public void Dispose() {
@@ -40,6 +40,7 @@ namespace SCSSdkClient {
             Log.SaveShutdown();
         }
 #else
+
         public void Dispose() => _updateTimer?.Dispose();
 
 #endif
@@ -69,20 +70,28 @@ namespace SCSSdkClient {
         public string Map { get; private set; }
         public int UpdateInterval => paused ? pausedUpdateInterval : updateInterval;
 
-
         public Exception Error { get; private set; }
 
         public event TelemetryData Data;
 
         public event EventHandler JobStarted;
+
         public event EventHandler JobCancelled;
+
         public event EventHandler JobDelivered;
+
         public event EventHandler Fined;
+
         public event EventHandler Tollgate;
+
         public event EventHandler Ferry;
+
         public event EventHandler Train;
+
         public event EventHandler RefuelStart;
+
         public event EventHandler RefuelEnd;
+
         public event EventHandler RefuelPayed;
 
         public void pause() => _updateTimer.Change(Timeout.Infinite, Timeout.Infinite);
@@ -127,9 +136,13 @@ namespace SCSSdkClient {
         private void _updateTimer_Elapsed(object sender) {
             var scsTelemetry = SharedMemory.Update<SCSTelemetry>();
 
+            if (scsTelemetry == null) {
+                return;
+            }
+
             // check if sdk is NOT running
             if (!scsTelemetry.SdkActive && !paused) {
-                // if so don't check so often the data 
+                // if so don't check so often the data
                 var tsInterval = new TimeSpan(0, 0, 0, 0, DefaultPausedUpdateInterval);
                 _updateTimer.Change(tsInterval.Add(tsInterval), tsInterval);
                 paused = true;
@@ -182,43 +195,41 @@ namespace SCSSdkClient {
 
             if (delivered != scsTelemetry.SpecialEventsValues.JobDelivered) {
                 delivered = scsTelemetry.SpecialEventsValues.JobDelivered;
-               
+
                 if (!updated) {
                     Data?.Invoke(scsTelemetry, true);
                     updated = true;
                 }
 
-                JobDelivered?.Invoke(this, new EventArgs());          
+                JobDelivered?.Invoke(this, new EventArgs());
             }
 
             if (fined != scsTelemetry.SpecialEventsValues.Fined) {
                 fined = scsTelemetry.SpecialEventsValues.Fined;
-                
-                Fined?.Invoke(this, new EventArgs());            
+
+                Fined?.Invoke(this, new EventArgs());
             }
 
             if (tollgate != scsTelemetry.SpecialEventsValues.Tollgate) {
                 tollgate = scsTelemetry.SpecialEventsValues.Tollgate;
 
-                
                 Tollgate?.Invoke(this, new EventArgs());
-                
             }
 
             if (ferry != scsTelemetry.SpecialEventsValues.Ferry) {
                 ferry = scsTelemetry.SpecialEventsValues.Ferry;
-                
+
                 if (!updated) {
                     Data?.Invoke(scsTelemetry, true);
                     updated = true;
                 }
 
-                Ferry?.Invoke(this, new EventArgs());               
+                Ferry?.Invoke(this, new EventArgs());
             }
 
             if (train != scsTelemetry.SpecialEventsValues.Train) {
                 train = scsTelemetry.SpecialEventsValues.Train;
-                
+
                 if (!updated) {
                     Data?.Invoke(scsTelemetry, true);
                     updated = true;
@@ -252,6 +263,7 @@ namespace SCSSdkClient {
                 Data?.Invoke(scsTelemetry, false);
             }
         }
+
 #if LOGGING
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
             try {

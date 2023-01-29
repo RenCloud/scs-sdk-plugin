@@ -1,9 +1,4 @@
-﻿//
-// Ets2SdkClient
-// Ets2SdkDataAlt.cs
-// 22:51
-
-using System;
+﻿using System;
 using System.Text;
 using SCSSdkClient.Object;
 
@@ -14,8 +9,8 @@ namespace SCSSdkClient {
     /// </summary>
     public class SCSSdkConvert {
         private const int StringSize = 64;
-        private const int Substances = 25;
         private const int WheelSize = 16;
+        private const int Substances = 25;
 
         private readonly int[] _offsetAreas =
             {0, 40, 500, 700, 1500, 1640, 2000, 2200, 2300, 4000, 4200, 4300, 4400, 6000};
@@ -24,6 +19,8 @@ namespace SCSSdkClient {
         private int _offset;
 
         private int _offsetArea;
+
+        private bool currentlyActive = false;
 
         /// <summary>
         ///     Convert the Shared Memory Byte data structure in a C# object
@@ -35,6 +32,12 @@ namespace SCSSdkClient {
         ///     C# object with game data of the shared memory
         /// </returns>
         public SCSTelemetry Convert(byte[] structureDataBytes) {
+            if (currentlyActive) {
+                return null;
+            }
+
+            currentlyActive = true;
+
             _offsetArea = 0;
             SetOffset();
 
@@ -388,6 +391,8 @@ namespace SCSSdkClient {
 
             #endregion 14TH ZONE
 
+            currentlyActive = false;
+
             return retData;
         }
 
@@ -399,6 +404,7 @@ namespace SCSSdkClient {
 
         private bool[] GetBoolArray(int length) {
             var res = new bool[length];
+
             for (var i = 0; i < length; i++) {
                 res[i] = GetBool();
             }
@@ -594,7 +600,6 @@ namespace SCSSdkClient {
 
         private SCSTelemetry.Trailer[] GetTrailers() {
             var trailer = new SCSTelemetry.Trailer[10];
-
             //TODO : only 1 for old game versions
             for (var i = 0; i < 10; i++) {
                 trailer[i] = GetTrailer();
@@ -640,7 +645,6 @@ namespace SCSSdkClient {
         }
 
         private void SetOffset() {
-            // Debug Fix?
             if (_offsetArea >= _offsetAreas.Length) {
                 return;
             }

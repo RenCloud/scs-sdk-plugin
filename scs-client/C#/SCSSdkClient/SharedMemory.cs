@@ -3,10 +3,12 @@ using System.IO.MemoryMappedFiles;
 using SCSSdkClient.Object;
 
 namespace SCSSdkClient {
+
     /// <summary>
     ///     Manage the shared memory
     /// </summary>
     public class SharedMemory {
+
         /// <summary>
         ///     size of the shared memory in bytes
         /// </summary>
