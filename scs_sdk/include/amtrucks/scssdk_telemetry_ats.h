@@ -33,6 +33,8 @@ SCSSDK_HEADER
  * 1.03 - added support for 'avoid_inspection', 'illegal_border_crossing' and 'hard_shoulder_violation' offence type in 'player.fined' gameplay event
  * 1.04 - added differential lock, lift axle and hazard warning channels
  * 1.05 - added multiplayer time offset and trailer body wear channel, fixed trailer chassis wear channel
+ * 1.06 - added mandatory break channel
+ * 1.07 - added car job related configs and events
  */
 //@{
 #define SCS_TELEMETRY_ATS_GAME_VERSION_1_00             SCS_MAKE_VERSION(1, 0)
@@ -41,7 +43,9 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_ATS_GAME_VERSION_1_03             SCS_MAKE_VERSION(1, 3) // Patch 1.36
 #define SCS_TELEMETRY_ATS_GAME_VERSION_1_04             SCS_MAKE_VERSION(1, 4) // Patch 1.41
 #define SCS_TELEMETRY_ATS_GAME_VERSION_1_05             SCS_MAKE_VERSION(1, 5) // Patch 1.45
-#define SCS_TELEMETRY_ATS_GAME_VERSION_CURRENT          SCS_TELEMETRY_ATS_GAME_VERSION_1_05
+#define SCS_TELEMETRY_ATS_GAME_VERSION_1_06             SCS_MAKE_VERSION(1, 6) // Patch 1.60
+#define SCS_TELEMETRY_ATS_GAME_VERSION_1_07             SCS_MAKE_VERSION(1, 7) // Patch 1.61
+#define SCS_TELEMETRY_ATS_GAME_VERSION_CURRENT          SCS_TELEMETRY_ATS_GAME_VERSION_1_07
 //@}
 
 // Game specific units.

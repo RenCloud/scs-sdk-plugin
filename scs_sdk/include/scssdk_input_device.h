@@ -84,7 +84,7 @@ struct scs_input_device_input_t
          */
         scs_value_type_t        value_type;
 
-#ifdef SCS_ARCHITECTURE_x64
+#if (SCS_CPU_BITNESS == 64)
         /**
          * @brief Explicit 8-byte alignment for structure size.
          */

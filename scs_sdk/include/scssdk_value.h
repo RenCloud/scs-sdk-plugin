@@ -225,7 +225,7 @@ struct scs_named_value_t
          */
         scs_u32_t       index;
 
-#ifdef SCS_ARCHITECTURE_x64
+#if (SCS_CPU_BITNESS == 64)
         /**
          * @brief Explicit 8-byte alignment for the value part.
          */

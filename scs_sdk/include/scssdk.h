@@ -28,8 +28,10 @@ typedef const char *            scs_string_t;
 
 #if defined(_WIN64)
 #define SCS_ARCHITECTURE_x64
+#define SCS_CPU_BITNESS 64
 #else
 #define SCS_ARCHITECTURE_x86
+#define SCS_CPU_BITNESS 32
 #endif
 
 #define SCS_PF_U64 "I64u"
@@ -51,14 +53,22 @@ typedef const char *            scs_string_t;
 
 #if defined(__x86_64__)
 #define SCS_ARCHITECTURE_x64
-#define SCS_PF_U64 "lu"
-#define SCS_PF_S64 "ld"
+#define SCS_CPU_BITNESS 64
 #elif defined(__i386__)
 #define SCS_ARCHITECTURE_x86
+#define SCS_CPU_BITNESS 32
+#else
+#error "Unknown architecture."
+#endif
+
+#if (SCS_CPU_BITNESS == 64)
+#define SCS_PF_U64 "lu"
+#define SCS_PF_S64 "ld"
+#elif (SCS_CPU_BITNESS == 32)
 #define SCS_PF_U64 "llu"
 #define SCS_PF_S64 "lld"
 #else
-#error "Unknown architecture."
+#error "Unknown CPU bitness."
 #endif
 
 #else
@@ -106,9 +116,9 @@ const scs_result_t SCS_RESULT_generic_error             = -7; // Error not cover
 #define SCS_CONCAT(prefix, suffix)              SCS_CONCAT2(prefix, suffix)
 #define scs_static_check(expr)                  typedef int SCS_CONCAT(some_requirement_failed_at_, __LINE__)[(expr) ? 1 : -1]
 
-#if defined(SCS_ARCHITECTURE_x86)
+#if (SCS_CPU_BITNESS == 32)
 #define scs_check_size(structure, expected_32, expected_64)     scs_static_check(sizeof(structure) == expected_32)
-#elif defined(SCS_ARCHITECTURE_x64)
+#elif (SCS_CPU_BITNESS == 64)
 #define scs_check_size(structure, expected_32, expected_64)     scs_static_check(sizeof(structure) == expected_64)
 #endif
 
@@ -176,7 +186,7 @@ struct scs_sdk_init_params_v100_t
          */
         scs_u32_t                               game_version;
 
-#ifdef SCS_ARCHITECTURE_x64
+#if (SCS_CPU_BITNESS == 64)
         /**
          * @brief Explicit alignment for the 64 bit pointer.
          */

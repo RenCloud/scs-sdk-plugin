@@ -145,6 +145,42 @@ SCSSDK_HEADER
  */
 #define SCS_TELEMETRY_CONFIG_job                                "job"
 
+/**
+ * @brief Static configuration of the bus job.
+ *
+ * If empty set of attributes is returned, there is no bus job.
+ *
+ * Supported attributes will be documented after release of bus dlc.
+ */
+#define SCS_TELEMETRY_CONFIG_bus_job                            "bus_job"
+
+/**
+ * @brief Static configuration of the car job.
+ *
+ * If empty set of attributes is returned, there is no car job.
+ *
+ * Supported attributes:
+ * @li cargo_id
+ * @li cargo
+ * @li cargo_unit_count
+ * @li destination_city_id
+ * @li destination_city
+ * @li source_city_id
+ * @li source_city
+ * @li destination_company_id
+ * @li destination_company
+ * @li source_company_id
+ * @li source_company
+ * @li income - represents expected income for the car job without any penalties
+ * @li delivery_time
+ * @li car_job_market
+ * @li customer_prio_cargo_handling
+ * @li customer_prio_time
+ * @li customer_prio_vehicle_appearance
+ * @li planned_distance_km
+ */
+#define SCS_TELEMETRY_CONFIG_car_job                            "car_job"
+
  // Attributes
 
  /**
@@ -641,11 +677,44 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_job_market                "job.market"
 
 /**
+ * @brief The car job market this car job is from.
+ *
+ * The value is a string representing the type of the car job market.
+ * Possible values:
+ * @li quick_job
+ * @li dispatch_job
+ *
+ * Type: string
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_car_job_market            "car_job.market"
+
+/**
  * @brief Flag indicating that the job is special transport job.
  *
  * Type: bool
  */
 #define SCS_TELEMETRY_CONFIG_ATTRIBUTE_special_job              "is.special.job"
+
+/**
+ * @brief Flag indicating that the car job's customer prioritizes cargo handling.
+ *
+ * Type: bool
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_customer_prio_cargo_handling "customer.prio.cargo"
+
+/**
+ * @brief Flag indicating that the car job's customer prioritizes delivery time.
+ *
+ * Type: bool
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_customer_prio_time       "customer.prio.time"
+
+/**
+ * @brief Flag indicating that the car job's customer prioritizes vehicle appearance at delivery.
+ *
+ * Type: bool
+ */
+#define SCS_TELEMETRY_CONFIG_ATTRIBUTE_customer_prio_vehicle_appearance "customer.prio.vehicle"
 
 SCSSDK_FOOTER
 

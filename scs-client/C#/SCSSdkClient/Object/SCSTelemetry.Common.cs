@@ -15,6 +15,7 @@ namespace SCSSdkClient.Object {
             public Common() {
                 GameTime = new Time();
                 NextRestStop = new Frequency();
+                NextMandatoryBreak = new Frequency();
             }
 
             /// About: Scale
@@ -44,6 +45,11 @@ namespace SCSSdkClient.Object {
             public Frequency NextRestStop { get; internal set; }
 
             /// <summary>
+            ///     Time until the next required mandatory break.
+            /// </summary>
+            public Frequency NextMandatoryBreak { get; internal set; }
+
+            /// <summary>
             ///     In game time of next rest stop
             /// </summary>
             /// <example>
@@ -60,6 +66,11 @@ namespace SCSSdkClient.Object {
             /// </code>
             /// </example>
             public Time NextRestStopTime => new Time { Value = (uint)((int)GameTime.Value + NextRestStop.Value) };
+
+            /// <summary>
+            ///     In game time of next mandatory break.
+            /// </summary>
+            public Time NextMandatoryBreakTime => new Time { Value = (uint)((int)GameTime.Value + NextMandatoryBreak.Value) };
 
             /// <summary>
             ///     Scale applied to distance and time to compensate for the scale of the map(e.g. 1s of real time corresponds to

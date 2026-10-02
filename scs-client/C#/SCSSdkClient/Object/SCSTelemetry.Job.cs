@@ -36,6 +36,26 @@ namespace SCSSdkClient.Object {
             public JobMarket Market { get; internal set; }
 
             /// <summary>
+            ///     Raw job market name as provided by the SDK.
+            /// </summary>
+            public string MarketName { get; internal set; }
+
+            /// <summary>
+            ///     Whether the customer prioritizes cargo handling for car jobs.
+            /// </summary>
+            public bool CustomerPrioCargoHandling { get; internal set; }
+
+            /// <summary>
+            ///     Whether the customer prioritizes delivery time for car jobs.
+            /// </summary>
+            public bool CustomerPrioTime { get; internal set; }
+
+            /// <summary>
+            ///     Whether the customer prioritizes vehicle appearance for car jobs.
+            /// </summary>
+            public bool CustomerPrioVehicleAppearance { get; internal set; }
+
+            /// <summary>
             ///     Planned job distance in simulated kilometers.
             ///     Does not include distance driven using ferry.
             /// </summary>

@@ -7,7 +7,7 @@
 // - Shared memory map struct layout
 // - [..]
 
-#define PLUGIN_REVID					12
+#define PLUGIN_REVID 13
 
 #define ETS2                            1
 #define ATS                             2
@@ -24,6 +24,8 @@
 #include "scssdk.h"
 #define SCS_PLUGIN_MMF_NAME TEXT("Local\\SCSTelemetry")
 #define SCS_PLUGIN_MMF_SIZE (32*1024)
+#define SCS_PLUGIN_LEGACY_TRAILER_ZONE_OFFSET 6000
+#define SCS_PLUGIN_EXTENDED_ZONE_OFFSET 21600
 /**
  * \brief string size for all strings (most of them) the amount of fields in the shared memory field
  */
@@ -40,8 +42,9 @@
 
 bool check_min_version(unsigned const int min_ets2, unsigned const int min_ats);
 bool check_max_version(unsigned const int min_ets2, unsigned const int min_ats);
-enum configType { substances, controls, hshifter, truck, trailer, job };
-enum gameplayType { cancelled, delivered, fined, tollgate, ferry, train };
+enum configType { substances, controls, hshifter, truck, trailer, job, car_job, bus_job };
+enum gameplayType { cancelled, delivered, fined, tollgate, ferry, train, car_cancelled, car_delivered };
+enum activeJobType { active_job_none, active_job_freight, active_job_car };
 void log_line(scs_log_type_t type, const char* text, ...);
 void log_line(const char* text, ...);
 
@@ -547,7 +550,70 @@ typedef struct scsTelemetryMap_s
 		scsTrailer_t trailer[10];
 	}trailer;
 
-	//----- END OF 14TH ZONE AT OFFSET 21619 -----//
+	//----- END OF 14TH ZONE AT OFFSET 21599 -----//
+
+	//----- START OF 15TH ZONE AT OFFSET 21600 -----//
+	struct {
+		int nextMandatoryBreak;
+		int carJobDeliveredEarnedXp;
+	}extension_i;
+
+	struct {
+		unsigned int carJobDeliveryTime;
+		unsigned int carJobUnitCount;
+		unsigned int carJobPlannedDistanceKm;
+		unsigned int carJobDeliveredDeliveryTime;
+		unsigned int carJobStartingTime;
+		unsigned int carJobFinishedTime;
+	}extension_ui;
+
+	struct {
+		float carJobCargoMass;
+		float carJobUnitMass;
+		float carJobCargoDamage;
+		float carJobDeliveredCargoDamage;
+		float carJobDeliveredVehicleDamage;
+		float carJobDeliveredDistanceKm;
+	}extension_f;
+
+	struct {
+		bool carJobCargoLoaded;
+		bool carJobCustomerPrioCargoHandling;
+		bool carJobCustomerPrioTime;
+		bool carJobCustomerPrioVehicleAppearance;
+		bool carJobCancelled;
+		bool carJobDelivered;
+	}extension_b;
+
+	struct {
+		char carJobCargoId[stringsize];
+		char carJobCargo[stringsize];
+		char carJobCityDstId[stringsize];
+		char carJobCityDst[stringsize];
+		char carJobCompDstId[stringsize];
+		char carJobCompDst[stringsize];
+		char carJobCitySrcId[stringsize];
+		char carJobCitySrc[stringsize];
+		char carJobCompSrcId[stringsize];
+		char carJobCompSrc[stringsize];
+		char carJobMarket[32];
+	}extension_s;
+
+	struct {
+		unsigned long long carJobIncome;
+	}extension_ull;
+
+	struct {
+		long long carJobCancelledPenalty;
+		long long carJobDeliveredRevenue;
+	}extension_ll;
+
+	struct {
+		unsigned int activeJobType;
+	}extension_job;
+	//----- END OF 15TH ZONE -----//
 } scsTelemetryMap_t;
+
+scs_static_check(sizeof(scsTelemetryMap_t) <= SCS_PLUGIN_MMF_SIZE);
 
 #endif

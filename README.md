@@ -38,7 +38,34 @@ This plug-in stores it's data inside a Memory Mapped File, or "Shared Memory". T
 
 Rev Numbers shows big changes on the shared memory and sometimes on the C# object. That means Rev 10 wont work with Rev 9. Doesn't matter which side is not updated. Sub Versions that you can see in changelog.md should work with small errors or completely without. The C# object is mostly not changed. Only if needed, because of new values (most of the cases) or structure changes (less the case). If this occurs i will notice that. (See changelog.md. If you directly access the shared memory you will find an overview about the changes here.)
 
-### Plugin for 1.46/SDK1.14
+### Plugin for 1.61/SDK1.15
+
+This branch has been upgraded to `scs_sdk_1_15`. The SDK directory is named 1.15, while the telemetry game versions declared by its headers are ETS2 `1.20` and ATS `1.07`, both corresponding to Patch `1.61`. The plug-in revision has been increased to Rev 13.
+
+Rev 13 appends a 15th extension zone after the trailer data in shared memory. The extension zone starts at offset `21600`. Existing field offsets remain unchanged, but clients that read shared memory directly must use the Rev 13 extension layout to access the new fields. The C# client has been updated accordingly.
+
+New capabilities:
+
+- Common: `NextMandatoryBreak`, provided by the SDK channel `mandatory.break`.
+- Car jobs: `JobValues` is the only public active job object and can contain either freight job data or car job data. The native plug-in also mirrors car job data into the legacy job shared-memory fields. Car job remains an internal SDK data source and is not exposed as a separate public object.
+- Job type: `SpecialEventsValues.ActiveJobType` identifies the current task as `JobType.None`, `JobType.Freight`, or `JobType.Car` when `SpecialEventsValues.OnJob` is true.
+- Gameplay events: car job cancellation and delivery are exposed through the existing `JobCancelled` and `JobDelivered` events. `GamePlay.JobDelivered.VehicleDamage` contains the car job vehicle damage value.
+- `bus_job` is currently detected and logged as a warning, but is not exposed as a stable API because its field structure is not documented by the SDK.
+
+`JobValues` is the only public task data branch. Existing freight jobs continue to be exposed through `JobValues`. When the SDK reports a car job, the plug-in mirrors all fields that have a legacy representation into the old job shared-memory area, and the C# client copies the extension data into `JobValues`. The internal converter retains the car job source data only while translating the Rev 13 extension zone.
+
+Car job cancellation and delivery toggle the existing `JobCancelled`, `JobDelivered`, `OnJob`, and `JobFinished` flags and trigger only the existing `JobCancelled` and `JobDelivered` events. This avoids duplicate notifications for a single car job.
+
+Use `SpecialEventsValues.OnJob` to determine whether a task is active, then use `SpecialEventsValues.ActiveJobType` to distinguish the unified `JobValues` branch:
+
+```csharp
+if (telemetry.SpecialEventsValues.OnJob &&
+    telemetry.SpecialEventsValues.ActiveJobType == JobType.Car) {
+    // Current active job is a car job.
+}
+```
+
+`SpecialEventsValues.OnJob == false` means there is no active job and `SpecialEventsValues.ActiveJobType` is `JobType.None`. When `OnJob == true`, `JobType.Freight` means the active job is a regular freight job and `JobType.Car` means the active job is a car job.
 
 Lower SDK Version means there are less values / values that are zero. To get an overview which values that are look at the list at the middle of this document.
 Note to the SDK Version: SDK 1.13 is not the same like the sdk version of ETS2 or ATS. Both games have an own SDK version. See list under ATS.
@@ -55,6 +82,8 @@ A version number with an asterisk (e.g. 1.46*) indicates that this version is cu
 | - 1.40          | 1.16            | Should work                        |
 | 1.41 - 1.44     | 1.17            | Should work                        |
 | 1.45 - 1.46     | 1.18            | Works, Test Version                |
+| 1.60            | 1.19            | SDK updated, C# tested             |
+| 1.61            | 1.20            | SDK updated, C# tested             |
 
 
 ### ATS
@@ -67,6 +96,8 @@ A version number with an asterisk (e.g. 1.46*) indicates that this version is cu
 | - 1.40          | 1.03        | Should work         |
 | 1.41 - 1.44     | 1.04        | Should work         |
 | 1.45 - 1.46     | 1.05        | Works, Test Version |
+| 1.60            | 1.06        | SDK updated, C# tested |
+| 1.61            | 1.07        | SDK updated, C# tested |
 
 
 ### SDK VERSION AND GAME SDK VERSION
@@ -83,6 +114,7 @@ A version number with an asterisk (e.g. 1.46*) indicates that this version is cu
 | 1_12        | 1.16             | 1.03            |
 | 1_13        | 1.17             | 1.04            |
 | 1_14        | 1.18             | 1.05            |
+| 1_15        | 1.20             | 1.07            |
 
 
 
@@ -112,7 +144,9 @@ New stuff is marked with the <ins>inserted</ins> Tag.
 │    │    ├── Scale
 │    │    ├── Game Time (Time object with in-game minutes and datetime object)
 │    │    ├── NextRestStop (Frequency object, more a time span)
-│    │    └── NextRestStopTime (Specific date, calculated)
+│    │    ├── NextRestStopTime (Specific date, calculated)
+│    │    ├── <ins>NextMandatoryBreak</ins> (1.20/1.07/1.61)
+│    │    └── <ins>NextMandatoryBreakTime</ins> (Specific date, calculated)
 │    ├── <strong>Truck Values (Contains 2 big parts, and a small one)</strong>:
 │    │    ├── <strong>Constants/Configs (Values that barely change)</strong>:
 │    │    │    ├── <strong>Motor Values</strong>:
@@ -285,12 +319,16 @@ New stuff is marked with the <ins>inserted</ins> Tag.
 │    │    ├── LicensePlate (1.14/1.01/1.35)
 │    │    ├── LicensePlateCountryId (1.14/1.01/1.35)
 │    │    └── LicensePlateCountry (1.14/1.01/1.35)
-│    ├── <strong>Job Values(will be reset after the job finished flag is disappeared)</strong>:
+│    ├── <strong>Job Values(will be reset after the job finished flag is disappeared; unified active job branch for freight jobs and car jobs starting with Rev 13)</strong>:
 │    │    ├── Delivery Time (time object -> in-game minutes and datetime object)
 │    │    ├── Remaining Delivery Time (calculated)
 │    │    ├── CargoLoaded (1.14/1.01/1.35)
 │    │    ├── SpecialJob (1.14/1.01/1.35)
 │    │    ├── Market (1.14/1.01/1.35)
+│    │    ├── <ins>MarketName</ins> (raw SDK market string; used by car jobs in Rev 13)
+│    │    ├── <ins>CustomerPrioCargoHandling</ins> (car jobs, 1.20/1.07/1.61)
+│    │    ├── <ins>CustomerPrioTime</ins> (car jobs, 1.20/1.07/1.61)
+│    │    ├── <ins>CustomerPrioVehicleAppearance</ins> (car jobs, 1.20/1.07/1.61)
 │    │    ├── City Destination Id (code)
 │    │    ├── City Destination
 │    │    ├── Company Destination Id (code)
@@ -325,8 +363,9 @@ New stuff is marked with the <ins>inserted</ins> Tag.
 │    │    └── Speed Limit
 │    ├── <strong>SpecialEvents</strong>:
 │    │    ├── On Job
-│    │    ├── Job Cancelled (1.14/1.01/1.35)
-│    │    ├── Job Delivered (1.14/1.01/1.35)
+│    │    ├── <ins>ActiveJobType</ins> (None, Freight, or Car; Rev 13)
+│    │    ├── Job Cancelled (1.14/1.01/1.35; also toggled by car jobs in Rev 13)
+│    │    ├── Job Delivered (1.14/1.01/1.35; also toggled by car jobs in Rev 13)
 │    │    ├── Fined (1.14/1.01/1.35)
 │    │    ├── Tollgate (1.14/1.01/1.35)
 │    │    ├── Ferry (1.14/1.01/1.35)
@@ -348,6 +387,7 @@ New stuff is marked with the <ins>inserted</ins> Tag.
 │         │    ├── AutoLoaded
 │         │    ├── AutoParked
 │         │    ├── CargoDamage
+│         │    ├── <ins>VehicleDamage</ins> (car jobs, 1.20/1.07/1.61)
 │         │    ├── DeliveryTime
 │         │    ├── DistanceKm
 │         │    ├── EarnedXp

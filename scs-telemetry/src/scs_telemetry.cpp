@@ -349,6 +349,7 @@ static auto clear_tollgate_ticker = 0;
 static auto clear_ferry_ticker = 0;
 static auto clear_train_ticker = 0;
 static auto clear_refuel_payed_ticker = 0;
+static auto on_car_job = false;
 
 // TODO: REWORK BOTH CLEAN FUNCTION AND ADD MORE FOR SINGLE CONFIG attribute
 //  Function: set_job_values_zero
@@ -526,6 +527,7 @@ SCSAPI_VOID telemetry_gameplay(const scs_event_t event,
     telem_ptr->gameplay_ui.jobFinishedTime = telem_ptr->common_ui.time_abs;
     telem_ptr->special_b.onJob = false;
     telem_ptr->special_b.jobFinished ^= true;
+    telem_ptr->extension_job.activeJobType = active_job_none;
   } else if (strcmp(info->id, SCS_TELEMETRY_GAMEPLAY_EVENT_job_delivered) ==
              0) {
     type = delivered;
@@ -533,6 +535,7 @@ SCSAPI_VOID telemetry_gameplay(const scs_event_t event,
     telem_ptr->gameplay_ui.jobFinishedTime = telem_ptr->common_ui.time_abs;
     telem_ptr->special_b.onJob = false;
     telem_ptr->special_b.jobFinished ^= true;
+    telem_ptr->extension_job.activeJobType = active_job_none;
   } else if (strcmp(info->id, SCS_TELEMETRY_GAMEPLAY_EVENT_player_fined) == 0) {
     type = fined;
     telem_ptr->special_b.fined ^= true;
@@ -548,6 +551,28 @@ SCSAPI_VOID telemetry_gameplay(const scs_event_t event,
              0) {
     type = train;
     telem_ptr->special_b.train ^= true;
+  } else if (strcmp(info->id, SCS_TELEMETRY_GAMEPLAY_EVENT_car_job_cancelled) ==
+             0) {
+    type = car_cancelled;
+    telem_ptr->special_b.jobCancelled ^= true;
+    telem_ptr->special_b.onJob = false;
+    telem_ptr->special_b.jobFinished ^= true;
+    telem_ptr->gameplay_ui.jobFinishedTime = telem_ptr->common_ui.time_abs;
+    telem_ptr->extension_job.activeJobType = active_job_none;
+    telem_ptr->extension_b.carJobCancelled ^= true;
+    telem_ptr->extension_ui.carJobFinishedTime = telem_ptr->common_ui.time_abs;
+    on_car_job = false;
+  } else if (strcmp(info->id, SCS_TELEMETRY_GAMEPLAY_EVENT_car_job_delivered) ==
+             0) {
+    type = car_delivered;
+    telem_ptr->special_b.jobDelivered ^= true;
+    telem_ptr->special_b.onJob = false;
+    telem_ptr->special_b.jobFinished ^= true;
+    telem_ptr->gameplay_ui.jobFinishedTime = telem_ptr->common_ui.time_abs;
+    telem_ptr->extension_job.activeJobType = active_job_none;
+    telem_ptr->extension_b.carJobDelivered ^= true;
+    telem_ptr->extension_ui.carJobFinishedTime = telem_ptr->common_ui.time_abs;
+    on_car_job = false;
   } else {
     log_line(SCS_LOG_TYPE_warning,
              "Something went wrong with this gameplay event %s", info->id);
@@ -593,6 +618,12 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event,
     type = truck;
   } else if (strcmp(info->id, SCS_TELEMETRY_CONFIG_job) == 0) {
     type = job;
+  } else if (strcmp(info->id, SCS_TELEMETRY_CONFIG_car_job) == 0) {
+    type = car_job;
+  } else if (strcmp(info->id, SCS_TELEMETRY_CONFIG_bus_job) == 0) {
+    log_line(SCS_LOG_TYPE_warning,
+             "bus_job configuration is not exposed because SDK attributes are undocumented");
+    return;
   } else {
     // check if it is trailer with backwards compatibility
     if (check_max_version(13, 0)) {
@@ -647,10 +678,23 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event,
   if (type == job && is_empty && telem_ptr->special_b.onJob) {
     telem_ptr->special_b.onJob = false;
     telem_ptr->special_b.jobFinished ^= true;
+    telem_ptr->extension_job.activeJobType = active_job_none;
   } else if (!telem_ptr->special_b.onJob && type == job && !is_empty) {
     // oh hey no job but now we have fields in this array so we start a new job
     telem_ptr->special_b.onJob = true;
     telem_ptr->gameplay_ui.jobStartingTime = telem_ptr->common_ui.time_abs;
+    telem_ptr->extension_job.activeJobType = active_job_freight;
+  } else if (type == car_job && is_empty && on_car_job) {
+    on_car_job = false;
+    telem_ptr->special_b.onJob = false;
+    telem_ptr->special_b.jobFinished ^= true;
+    telem_ptr->extension_job.activeJobType = active_job_none;
+  } else if (!on_car_job && type == car_job && !is_empty) {
+    on_car_job = true;
+    telem_ptr->special_b.onJob = true;
+    telem_ptr->gameplay_ui.jobStartingTime = telem_ptr->common_ui.time_abs;
+    telem_ptr->extension_ui.carJobStartingTime = telem_ptr->common_ui.time_abs;
+    telem_ptr->extension_job.activeJobType = active_job_car;
   }
 }
 
@@ -1182,6 +1226,11 @@ SCSAPI_RESULT scs_telemetry_init(
     }
   }
 
+  if (check_min_version(19, 6)) {
+    REGISTER_CHANNEL(CHANNEL_next_mandatory_break, s32,
+                     telem_ptr->extension_i.nextMandatoryBreak);
+  }
+
   // Set the structure with defaults.
 
   timestamp = static_cast<scs_timestamp_t>(0);
@@ -1207,6 +1256,8 @@ SCSAPI_VOID scs_telemetry_shutdown() {
   telem_ptr->scs_values.telemetry_version_game_minor = 0;
   telem_ptr->scs_values.version_major = 0;
   telem_ptr->scs_values.version_minor = 0;
+  telem_ptr->special_b.onJob = false;
+  telem_ptr->extension_job.activeJobType = active_job_none;
 
   telem_ptr->time = 0;
   telem_ptr->simulatedTime = 0;

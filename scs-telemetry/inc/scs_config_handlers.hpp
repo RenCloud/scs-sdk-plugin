@@ -119,5 +119,28 @@ scsConfigHandle(Job, UnitCount);
 scsConfigHandle(Job, UnitMass);
 scsConfigHandle(Job, PlannedDistanceKm);
 
+// Car job
+scsConfigHandle(CarJob, CargoId);
+scsConfigHandle(CarJob, Cargo);
+scsConfigHandle(CarJob, CargoMass);
+scsConfigHandle(CarJob, CityDstId);
+scsConfigHandle(CarJob, CityDst);
+scsConfigHandle(CarJob, CitySrcId);
+scsConfigHandle(CarJob, CitySrc);
+scsConfigHandle(CarJob, CompDstId);
+scsConfigHandle(CarJob, CompDst);
+scsConfigHandle(CarJob, CompSrcId);
+scsConfigHandle(CarJob, CompSrc);
+scsConfigHandle(CarJob, Income);
+scsConfigHandle(CarJob, DeliveryTime);
+scsConfigHandle(CarJob, IsCargoLoaded);
+scsConfigHandle(CarJob, Market);
+scsConfigHandle(CarJob, UnitCount);
+scsConfigHandle(CarJob, UnitMass);
+scsConfigHandle(CarJob, PlannedDistanceKm);
+scsConfigHandle(CarJob, CustomerPrioCargoHandling);
+scsConfigHandle(CarJob, CustomerPrioTime);
+scsConfigHandle(CarJob, CustomerPrioVehicleAppearance);
+
 bool handleCfg(const scs_named_value_t* info,const configType type, const unsigned int trailer_id);
 #endif

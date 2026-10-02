@@ -55,8 +55,10 @@
     <Compile Include="AuxLevel.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="JobMarket.cs" />
+    <Compile Include="JobType.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Object\SCSTelemetry.GamePlayEvents.cs" />
+    <Compile Include="Object\SCSTelemetry.CarJob.cs" />
     <Compile Include="Object\SCSTelemetry.Methods.cs" />
     <Compile Include="Object\SCSTelemetry.Substance.cs" />
     <Compile Include="Object\SCSTelemetry.Wheels.cs" />

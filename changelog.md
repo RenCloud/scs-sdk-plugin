@@ -1,5 +1,35 @@
 # Changelog
 
+## Rev 13 (Game Version 1.61)
+
+update to SDK Version 1.15
+
+### Important Changes
+
+- added support for the new SDK values for ETS2 telemetry 1.20 and ATS telemetry 1.07
+- added car job support
+  - `JobValues` is the only public active job branch for freight jobs and car jobs
+  - car job values with a legacy representation are also written to the old job, gameplay and special event values for backwards compatibility
+- `SpecialEventsValues.OnJob` remains the value that indicates if a job is active
+  - `SpecialEventsValues.ActiveJobType` is placed on the same level and only distinguishes the job type while `OnJob` is true
+  - `ActiveJobType` is set to `None` when `OnJob` is false
+- car job cancellation and delivery use the existing `JobCancelled` and `JobDelivered` public events and update the legacy job cancelled, job delivered, on job and job finished values
+- `bus_job` is detected and logged, but is not exposed because its field structure is not documented by the SDK
+
+### New Values
+
+- NextMandatoryBreak
+- car job values
+- ActiveJobType (`None`, `Freight` and `Car`)
+- VehicleDamage for car job deliveries through `GamePlay.JobDelivered.VehicleDamage`
+
+### Shared Memory Changes
+
+- 15th zone added after the trailer values at offset `21600`
+- new extension values are placed in the 15th zone without changing the offsets of the existing zones
+- `activeJobType` is placed at the end of the extension zone
+- shared memory size remains 32kb
+
 ## Rev 12, Update 1
 
 - fix: add check to avoid a race condition when converting the data

@@ -19,6 +19,14 @@ SCSSDK_HEADER
 #define SCS_TELEMETRY_GAMEPLAY_EVENT_job_cancelled               "job.cancelled"
 
 /**
+ * @brief Event called when car job is cancelled.
+ *
+ * Attributes:
+ * @li cancel_penalty
+ */
+#define SCS_TELEMETRY_GAMEPLAY_EVENT_car_job_cancelled           "car_job.cancelled"
+
+/**
  * @brief Event called when job is delivered.
  *
  * Attributes:
@@ -31,6 +39,19 @@ SCSSDK_HEADER
  * @li autoload_used
  */
 #define SCS_TELEMETRY_GAMEPLAY_EVENT_job_delivered               "job.delivered"
+
+/**
+ * @brief Event called when car job is delivered.
+ *
+ * Attributes:
+ * @li revenue
+ * @li earned_xp
+ * @li cargo_damage
+ * @li vehicle_damage
+ * @li distance_km
+ * @li delivery_time
+ */
+#define SCS_TELEMETRY_GAMEPLAY_EVENT_car_job_delivered           "car_job.delivered"
 
 /**
  * @brief Event called when player gets fined.
@@ -102,6 +123,13 @@ SCSSDK_HEADER
  * Type: float
  */
 #define SCS_TELEMETRY_GAMEPLAY_EVENT_ATTRIBUTE_cargo_damage      "cargo.damage"
+
+/**
+ * @brief Total vehicle damage. (Range <0.0, 1.0>)
+ *
+ * Type: float
+ */
+#define SCS_TELEMETRY_GAMEPLAY_EVENT_ATTRIBUTE_vehicle_damage    "vehicle.damage"
 
 /**
  * @brief The real distance in km on the job.

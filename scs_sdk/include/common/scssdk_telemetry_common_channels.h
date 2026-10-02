@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file scssdk_telemetry_common_channels.h
  *
  * @brief Telemetry specific channels which might be used by more than one game.
@@ -50,7 +50,7 @@ SCSSDK_HEADER
 /**
  * @brief Time until next rest stop.
  *
- * When the fatique simulation is disabled, the behavior of this channel
+ * When the fatigue simulation is disabled, the behavior of this channel
  * is implementation dependent. The game might provide the value which would
  * apply if it was enabled or provide no value at all.
  *
@@ -59,6 +59,19 @@ SCSSDK_HEADER
  * Type: s32
  */
 #define SCS_TELEMETRY_CHANNEL_next_rest_stop                    "rest.stop"
+
+/**
+* @brief Time until the next required mandatory break.
+*
+* When the mandatory break simulation is disabled, the behavior of this channel
+* is implementation dependent.The game might provide the value which would
+* apply if it was enabled or provide no value at all.
+*
+* Represented in in-game minutes.
+*
+* Type: s32
+*/
+#define SCS_TELEMETRY_CHANNEL_next_mandatory_break               "mandatory.break"
 
 SCSSDK_FOOTER
 
